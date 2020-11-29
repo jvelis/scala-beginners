@@ -5,7 +5,7 @@ package lectures.part1basics
   */
 object DefaultArgs extends App {
 
-  def trFact(n: Int, acc: Int = 1): Int =
+  def trFact(n: Int, acc: Int = 1): Int =  // acc pollutes the function signature hence the acc=1
     if (n <= 1) acc
     else trFact(n-1, n*acc)
 

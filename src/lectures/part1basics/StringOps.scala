@@ -17,7 +17,7 @@ object StringOps extends App {
 
   val aNumberString = "2"
   val aNumber = aNumberString.toInt
-  println('a' +: aNumberString :+ 'z')
+  println('a' +: aNumberString :+ 'z') // append and prepend are scala specific
   println(str.reverse)
   println(str.take(2))
 
