@@ -1,5 +1,7 @@
 package lectures.part1basics
 
+import lectures.part1basics.Functions.isPrime
+
 import scala.annotation.tailrec
 
 /**
@@ -17,7 +19,7 @@ object Recursion extends App {
       result
     }
 
-  println(factorial(10))
+  //println(factorial(10))
 //  println(factorial(5000))
 
   def anotherFactorial(n: Int): BigInt = {
@@ -41,7 +43,7 @@ object Recursion extends App {
 
    */
 
-  println(anotherFactorial(20000))
+  //println(anotherFactorial(20000))
 
   // WHEN YOU NEED LOOPS, USE _TAIL_ RECURSION.
 
@@ -58,7 +60,6 @@ object Recursion extends App {
 
   println(concatenateTailrec("hello", 3, ""))
 
-
   def isPrime(n: Int): Boolean = {
     @tailrec
     def isPrimeTailrec(t: Int, isStillPrime: Boolean): Boolean =
@@ -69,14 +70,40 @@ object Recursion extends App {
     isPrimeTailrec(n / 2, true)
   }
 
-  println(isPrime(2003))
-  println(isPrime(629))
+  def isMyPrime(n : Int) : Boolean = {
+    @tailrec
+    def residual(s : Int, isStillPrime: Boolean) : Boolean = {
+      if(!isStillPrime) false
+      else if (n % s == 0) false
+      else if (s>2) residual(s-1, isStillPrime)
+      else true
+    }
+    if (n <= 1) false else
+    if (n == 2) true else
+      residual(n-1, true)
+  }
+
+  println(1, isMyPrime(1))
+  println(2, isMyPrime(2))
+  println(3, isMyPrime(3))
+  println(4, isMyPrime(4))
+  println(5, isMyPrime(5))
+  println(2003, isMyPrime(2003))
+  println(629, isMyPrime(629))
+
+  def oldFibonacci(n : Int) : Int = {
+    if (n <= 2) 1
+    else fibonacci(n - 1) + fibonacci(n - 2)
+  }
 
   def fibonacci(n: Int): Int = {
-    def fiboTailrec(i: Int, last: Int, nextToLast: Int): Int =
-      if(i >= n) last
+    // Two accumulators: last and nextToLast
+    // n-1 and n-2
+    @tailrec
+    def fiboTailrec(i: Int, last: Int, nextToLast: Int): Int = {
+      if (i >= n) last
       else fiboTailrec(i + 1, last + nextToLast, last)
-
+    }
     if (n <= 2) 1
     else fiboTailrec(2, 1, 1)
   }

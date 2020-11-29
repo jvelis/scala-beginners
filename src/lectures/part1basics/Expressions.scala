@@ -21,7 +21,12 @@ object Expressions extends App {
   aVariable += 3 // also works with -= *= /= ..... side effects
   println(aVariable)
 
-  // Instructions (DO) vs Expressions (VALUE)
+  // Instructions (DO - Imperative language) vs Expressions (VALUE)
+  // Instructions are executed (java)
+  // Expressions are evaluated (scala)
+  // Basic expresions: Operators
+  // If in scala is an expression
+  // Code blocks are expressions too (the last expression in the block returns the value)
 
   // IF expression
   val aCondition = true
@@ -41,9 +46,9 @@ object Expressions extends App {
   // EVERYTHING in Scala is an Expression!
 
   val aWeirdValue = (aVariable = 3) // Unit === void
-  println(aWeirdValue)
+  println(aWeirdValue) // Unit prints this: ()
 
-  // side effects: println(), whiles, reassigning
+  // side effects: println(), whiles, reassigning and expressions that return Unit
 
   // Code blocks
 
@@ -55,17 +60,19 @@ object Expressions extends App {
   }
 
   // 1. difference between "hello world" vs println("hello world")?
-  // 2.
+  // String vs Unit
+
+  // 2. what's the value of:
 
   val someValue = {
     2 < 3
-  }
+  } // true : Boolean
   println(someValue)
 
   val someOtherValue = {
     if(someValue) 239 else 986
     42
-  }
+  } // 42 : Int
   println(someOtherValue)
 
 
