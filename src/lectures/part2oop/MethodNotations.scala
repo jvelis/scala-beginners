@@ -1,5 +1,7 @@
 package lectures.part2oop
+
 import scala.language.postfixOps
+
 /**
   * Created by Daniel.
   */
@@ -68,9 +70,9 @@ object MethodNotations extends App {
    */
 
   println((mary + "the Rockstar").apply())
+  println((mary + "the Rockstar")())
   println((+mary).age)
   println(mary learnsScala)
   println(mary(10))
-
 
 }
